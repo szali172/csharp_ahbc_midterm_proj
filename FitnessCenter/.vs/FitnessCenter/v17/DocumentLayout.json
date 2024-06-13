@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\CSharpBootcamp\\Projects\\csharp_ahbc_midterm_proj\\FitnessCenter\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AFE7C394-F227-45B3-801B-485D5399E35E}|FitnessCenter\\FitnessCenter.csproj|c:\\csharpbootcamp\\projects\\csharp_ahbc_midterm_proj\\fitnesscenter\\fitnesscenter\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AFE7C394-F227-45B3-801B-485D5399E35E}|FitnessCenter\\FitnessCenter.csproj|solutionrelative:fitnesscenter\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DD4FB939-05C0-4BA1-B979-558B0A5F0F1D}|FitnessCenter\\FitnessCenter.csproj|c:\\csharpbootcamp\\projects\\csharp_ahbc_midterm_proj\\fitnesscenter\\fitnesscenter\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD4FB939-05C0-4BA1-B979-558B0A5F0F1D}|FitnessCenter\\FitnessCenter.csproj|solutionrelative:fitnesscenter\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +30,7 @@
               "RelativeToolTip": "FitnessCenter\\Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T01:28:34.54Z",
+              "WhenOpened": "2024-06-13T00:39:22.683Z",
               "EditorCaption": ""
             }
           ]
