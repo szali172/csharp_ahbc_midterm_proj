@@ -1,13 +1,9 @@
 # csharp_ahbc_midterm_proj
 Midterm Project for the C# After Hours Bootcamp
 
-
 *Link to Midterm Project - https://docs.google.com/document/d/1eJkUO6kITxvUXGIyv6o3hlcZP6BViqUM3w4Wamn1W2k/preview#heading=h.ve9iwzmwy11g
 
-
-
-
-
+//*********************//
 
 *Specific instructions are for FITNESS CENTER
 
