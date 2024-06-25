@@ -7,8 +7,8 @@ abstract class Member
     private string Name { get; set; }
     private decimal Fees { get; set; }
     //methods
-    public abstract void CheckIn(Club);
+    public abstract void CheckIn(Club club);
     
-    public abstract void CheckOut(Club);
+    public abstract void CheckOut(Club club);
     
 }
