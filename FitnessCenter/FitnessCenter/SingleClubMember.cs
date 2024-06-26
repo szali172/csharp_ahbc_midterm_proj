@@ -24,4 +24,12 @@ public class SingleClubMember : Member //come back to this
     {
         throw new NotImplementedException();    
     }
+    public void ChangeClub(Club newClub)
+    {
+        assignedClub = newClub;
+    }
+    public void ChangeMembership()
+    {
+        Console.WriteLine("Your club has changed");
+    }
 }
