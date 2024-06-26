@@ -1,11 +1,11 @@
 ﻿
 namespace FitnessCenter;
-abstract class Member
+public abstract class Member
 {
     //properties
-    private string ID { get; set; }
-    private string Name { get; set; }
-    private decimal Fees { get; set; }
+    public string ID { get; set; }
+    public string Name { get; set; }
+    public decimal Fees { get; set; }
     //methods
     public abstract void CheckIn(Club club);
     
