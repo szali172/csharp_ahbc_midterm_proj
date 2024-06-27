@@ -1,4 +1,3 @@
-﻿
 namespace FitnessCenter;
 
 public class MultiClubMember : Member

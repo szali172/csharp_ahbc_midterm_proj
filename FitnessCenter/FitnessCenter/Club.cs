@@ -30,13 +30,6 @@ public class Club
 
     public decimal GenerateFees(Member member)
     {
-        if (member is MultiClubMember)
-        {
-            return 15.0m;
-        }
-        else
-        {
-            return 10.0m;
-        }
+            return member.Fees;
     }
 }
