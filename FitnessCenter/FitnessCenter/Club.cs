@@ -1,6 +1,6 @@
 ﻿namespace FitnessCenter;
 
-class Club
+public class Club
 {
     public string Name { get; set; }
     public string Address { get; set; }
@@ -15,7 +15,7 @@ class Club
 
     public void DisplayMemberInfo(Member member)
     {
-        Console.WriteLine($"ID: {member.Id}, Name: {member.Name}");
+        Console.WriteLine($"ID: {member.ID}, Name: {member.Name}");
     }
 
     public void AddMember(Member member)
