@@ -62,7 +62,19 @@ public class UI
 
     public void MainPage()
     {
-        throw new NotImplementedException();
+        Console.WriteLine("Welcome to X Fitness Center. What would you like to do?");
+        Console.WriteLine("______________________________________________________");
+        Console.WriteLine("1. Add member");
+        Console.WriteLine("2. Renove member");
+        Console.WriteLine("3. Check in");
+        Console.WriteLine("4. Check out");
+        Console.WriteLine("5. Display member info");
+        Console.WriteLine("6. Check balance");
+        Console.WriteLine("7. Exit");
+        Console.WriteLine(" ");
+        Console.WriteLine("Please type the # of the action you wish to take.");
+
+        //throw new NotImplementedException();
     }
 
     public void AddMemberScreen()
