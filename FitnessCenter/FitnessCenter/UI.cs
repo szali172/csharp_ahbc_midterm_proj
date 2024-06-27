@@ -9,10 +9,33 @@ public class UI
     public List<Club> Clubs { get; set; }
 
     //Constructor
-    public UI(Dictionary<string, Member> Members, List<Club> Clubs)
+    public UI(Dictionary<string, Member> members, List<Club> clubs)
     {
-        this.Members = Members;
-        this.Clubs = Clubs;
+        // Initialize Members and Clubs based on provided parameters
+        Members = members;
+        Clubs = clubs;
+
+       
+        if (Clubs == null)
+        {
+            Clubs = new List<Club>
+                {
+                    new Club("Club 1", "123 North Street"),
+                    new Club("Club 2", "456 South Street"),
+                    new Club("Club 3", "789 West Street"),
+                    new Club("Club 4", "101 East Street")
+                };
+        }
+
+        if (Members == null)
+        {
+            Members = new Dictionary<string, Member>();
+
+            Members.Add("1", new SingleClubMember("1", "John Doe", Clubs[0]));
+            Members.Add("2", new SingleClubMember("2", "Jane Smith", Clubs[1]));
+            Members.Add("3", new MultiClubMember("3", "Alice Johnson"));
+            Members.Add("4", new MultiClubMember("4", "Bob Brown"));
+        }
     }
 
     //Methods
