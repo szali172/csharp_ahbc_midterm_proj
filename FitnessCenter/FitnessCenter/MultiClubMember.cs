@@ -6,6 +6,8 @@ public class MultiClubMember : Member
 
     public MultiClubMember(string name, string id)
     {
+        Name = name;
+        ID = id;
         Fees = 15.00m;
         MembershipPoints = 0;
     }
