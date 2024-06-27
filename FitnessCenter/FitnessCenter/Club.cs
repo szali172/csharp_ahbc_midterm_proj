@@ -1,4 +1,4 @@
-﻿namespace FitnessCenter;
+namespace FitnessCenter;
 
 public class Club
 {

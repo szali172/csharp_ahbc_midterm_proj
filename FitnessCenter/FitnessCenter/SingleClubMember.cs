@@ -16,16 +16,20 @@ public class SingleClubMember : Member //come back to this
     //Methods
     public override void CheckIn(Club club)
     {
-        /*
-         Check to see if its assigned to the passed club
-         Otherwise throw exception
-         If they’re at the right club, add this member to the passed in club’s CheckedIn_Members List property
-         */
         assignedClub = club;
         throw new NotImplementedException();
     }
     public override void CheckOut(Club club)
     {
         throw new NotImplementedException();    
+    }
+    public void ChangeClub(Club newClub)
+    {
+        throw new NotImplementedException ();
+    }
+    public void ChangeMembership()
+    {
+        throw new NotImplementedException();
+        //Console.WriteLine("Your club has changed");
     }
 }
