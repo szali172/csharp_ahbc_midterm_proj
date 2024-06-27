@@ -1,6 +1,5 @@
 ﻿
 namespace FitnessCenter;
-
 public class UI
 {
     //Properties
@@ -22,17 +21,55 @@ public class UI
 
     public void MainPage()
     {
-        Console.WriteLine("Welcome to X Fitness Center. What would you like to do?");
+        Console.WriteLine("Welcome to the GC Fitness Center. How can we help you today?");
         Console.WriteLine("______________________________________________________");
-        Console.WriteLine("1. Add member");
-        Console.WriteLine("2. Renove member");
-        Console.WriteLine("3. Check in");
-        Console.WriteLine("4. Check out");
-        Console.WriteLine("5. Display member info");
-        Console.WriteLine("6. Check balance");
-        Console.WriteLine("7. Exit");
-        Console.WriteLine(" ");
-        Console.WriteLine("Please type the # of the action you wish to take.");
+        Console.WriteLine("1. Add Single Club Member");
+        Console.WriteLine("2. Add Multi Club Member");
+        Console.WriteLine("3. Remove member");
+        Console.WriteLine("4. Check in Member");
+        Console.WriteLine("5. Check out Member");
+        Console.WriteLine("6. Display member info");
+        Console.WriteLine("7. Check balance");
+        Console.WriteLine("8. Exit");
+        Console.WriteLine("Please enter the # of your option.");
+        string option = Console.ReadLine();
+        if (option == "1")
+        {
+            //AddSingleClubMember();
+        }
+        else if (option == "2")
+        {
+            //AddMultiClubMember();
+        }
+        else if (option == "3")
+        {
+            //RemoveMember();
+        }
+        else if (option == "4")
+        {
+            //CheckInMember();
+        }
+        else if (option == "5")
+        {
+            //CheckOutMember();
+        }
+        else if (option == "6")
+        {
+            DisplayMemberInfo();
+        }
+        else if (option == "7")
+        {
+            //CheckBalanceMember();
+        }
+        else if (option =="8")
+        {
+            Console.WriteLine("Exiting program...Goodbye!");
+            return;
+        }
+        else
+        {
+            Console.WriteLine("Invalid option. Please type a number from 1 to 7.");
+        }
 
         //throw new NotImplementedException();
     }
