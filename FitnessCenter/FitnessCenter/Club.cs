@@ -1,4 +1,4 @@
-﻿namespace FitnessCenter;
+namespace FitnessCenter;
 
 public class Club
 {
@@ -30,6 +30,6 @@ public class Club
 
     public decimal GenerateFees(Member member)
     {
-            return member.Fees;
+        return member.Fees;
     }
 }

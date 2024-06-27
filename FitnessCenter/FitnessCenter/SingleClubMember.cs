@@ -3,13 +3,17 @@ namespace FitnessCenter;
 
 public class SingleClubMember : Member //come back to this
 {
+    //Properties
     private Club assignedClub;
-    //methods
-    public void SingleClub(Club assignedclub, string Name, string ID)
+
+    //Constructor
+    public SingleClubMember(Club assignedclub, string Name, string ID)
     {
-        Name = Name;
-        ID = ID;
+        this.Name = Name;
+        this.ID = ID;
     }
+
+    //Methods
     public override void CheckIn(Club club)
     {
         assignedClub = club;
