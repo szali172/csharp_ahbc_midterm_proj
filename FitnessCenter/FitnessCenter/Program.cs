@@ -12,4 +12,5 @@ List<Club> clubs = new List<Club> { club };
 
 UI ui = new UI(members, clubs);
 
-ui.RequestMember();
+/* Test UI functions here */
+//ui.RequestMember();
