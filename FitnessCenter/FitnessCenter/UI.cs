@@ -4,14 +4,15 @@ namespace FitnessCenter;
 public class UI
 {
     //Properties
-  
+
     public Dictionary<string, Member> Members { get; set; }
     public List<Club> Clubs { get; set; }
 
     //Constructor
-    public UI()
+    public UI(Dictionary<string, Member> Members, List<Club> Clubs)
     {
-        throw new NotImplementedException();
+        this.Members = Members;
+        this.Clubs = Clubs;
     }
 
     //Methods
@@ -24,6 +25,38 @@ public class UI
         else 
         { 
             return false; 
+        }
+    }
+
+    public Member RequestMember()
+    {
+        while(true)
+        {
+            Console.Write("Please enter a member ID: ");
+            string memberID = Console.ReadLine();
+
+            if (memberID == null)
+            {
+                Console.WriteLine("Please pass a valid input");
+                continue;
+            }
+
+            else if(Members.ContainsKey(memberID)) {
+                Console.WriteLine($"Member \"{Members[memberID].Name}\" was found");
+                return Members[memberID];
+            }
+
+            else
+            {
+                Console.WriteLine($"The member ID \"{memberID}\" does not exist. Would you like to try again? (y/n)");
+                string yOrN = Console.ReadLine();
+
+                if (yOrN == "n")
+                {
+                    throw new MemberNotFoundException();
+                }
+          
+            }
         }
     }
 
