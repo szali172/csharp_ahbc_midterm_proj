@@ -5,10 +5,10 @@ public class SingleClubMember : Member //come back to this
 {
     private Club assignedClub;
     //methods
-    public void SingleClub(Club assignedclub, string Name, string ID)
+    public SingleClubMember(Club assignedclub, string Name, string ID)
     {
-        Name = Name;
-        ID = ID;
+        this.Name = Name;
+        this.ID = ID;
     }
     public override void CheckIn(Club club)
     {
