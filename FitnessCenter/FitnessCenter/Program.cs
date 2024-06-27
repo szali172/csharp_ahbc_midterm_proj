@@ -1,16 +1,21 @@
 ﻿using FitnessCenter;
 
-Club club = new Club("test", "testAddy");
-SingleClubMember member = new SingleClubMember(club, "test", "id123");
-
-Dictionary<string, Member> members = new Dictionary<string, Member>()
+static void Main() 
 {
-   {member.ID, member}
-};
+    Club club = new Club("test", "testAddy");
+    SingleClubMember member = new SingleClubMember(club, "test", "id123");
 
-List<Club> clubs = new List<Club> { club };
+    Dictionary<string, Member> members = new Dictionary<string, Member>()
+    {
+       {member.ID, member}
+    };
 
-UI ui = new UI(members, clubs);
+    List<Club> clubs = new List<Club> { club };
 
-/* Test UI functions here */
-//ui.RequestMember();
+    UI ui = new UI(members, clubs);
+
+    /* Test UI functions here */
+    //ui.RequestMember();
+    }
+Main();
+

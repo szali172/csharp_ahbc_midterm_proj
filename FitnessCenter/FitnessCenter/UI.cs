@@ -4,7 +4,7 @@ namespace FitnessCenter;
 public class UI
 {
     //Properties
-    // Uncomment this once Member child classes are built
+
     public Dictionary<string, Member> Members { get; set; }
     public List<Club> Clubs { get; set; }
 
@@ -18,7 +18,14 @@ public class UI
     //Methods
     public bool CheckIfMemberExists(string ID)
     {
-        throw new NotImplementedException();
+        if (Members.ContainsKey(ID))
+        {
+            return true;
+        }
+        else 
+        { 
+            return false; 
+        }
     }
 
     public Member RequestMember()
@@ -70,7 +77,8 @@ public class UI
 
     public void CheckInScreen()
     {
-        throw new NotImplementedException();
+        
+        return;
     }
 
     public void CheckOutScreen()
