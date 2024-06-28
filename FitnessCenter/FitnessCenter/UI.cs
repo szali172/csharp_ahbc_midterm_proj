@@ -30,10 +30,10 @@ public class UI
         {
             Members = new Dictionary<string, Member>();
 
-            Members.Add("1", new SingleClubMember("1", "John Doe", Clubs[0]));
-            Members.Add("2", new SingleClubMember("2", "Jane Smith", Clubs[1]));
-            Members.Add("3", new MultiClubMember("3", "Alice Johnson"));
-            Members.Add("4", new MultiClubMember("4", "Bob Brown"));
+            Members.Add("1", new SingleClubMember(Clubs[0], "John Doe", "1"));
+            Members.Add("2", new SingleClubMember(Clubs[1], "Jane Smith", "2"));
+            Members.Add("3", new MultiClubMember("Alice Johnson", "3"));
+            Members.Add("4", new MultiClubMember("Bob Brown", "4"));
         }
     }
 
@@ -86,43 +86,42 @@ public class UI
     {
         Console.WriteLine("Welcome to the GC Fitness Center. How can we help you today?");
         Console.WriteLine("______________________________________________________");
-        Console.WriteLine("1. Add Single Club Member");
-        Console.WriteLine("2. Add Multi Club Member");
-        Console.WriteLine("3. Remove member");
-        Console.WriteLine("4. Check in Member");
-        Console.WriteLine("5. Check out Member");
-        Console.WriteLine("6. Display member info");
-        Console.WriteLine("7. Check balance");
-        Console.WriteLine("8. Exit");
+        Console.WriteLine("1. Add Member Screen");
+        Console.WriteLine("2. Remove member");
+        Console.WriteLine("3. Check in Member");
+        Console.WriteLine("4. Check out Member");
+        Console.WriteLine("5. Display member info");
+        Console.WriteLine("6. Check balance");
+        Console.WriteLine("7. Exit");
         Console.WriteLine("Please enter the # of your option.");
         string option = Console.ReadLine();
         if (option == "1")
         {
-            //AddSingleClubMember();
+            AddMemberScreen();
         }
         else if (option == "2")
         {
-            //AddMultiClubMember();
+            RemoveMemberScreen();
         }
         else if (option == "3")
         {
-            //RemoveMember();
+            CheckInScreen();
         }
         else if (option == "4")
         {
-            //CheckInMember();
+            CheckOutScreen();
         }
         else if (option == "5")
         {
-            //CheckOutMember();
+            DisplayMemberInfo();
         }
         else if (option == "6")
         {
-            DisplayMemberInfo();
+            CheckBalance();
         }
-        else if (option == "7")
+        else if (option =="7")
         {
-           // CheckBalanceMember();
+            //CheckBalanceMember();
         }
         else if (option =="8")
         {
@@ -133,8 +132,6 @@ public class UI
         {
             Console.WriteLine("Invalid option. Please type a number from 1 to 7.");
         }
-
-        //throw new NotImplementedException();
     }
 
     public void AddMemberScreen()
@@ -150,17 +147,47 @@ public class UI
     public void CheckInScreen()
     {
         
-        return;
+       try
+        {
+            Member member = RequestMember();
+            Console.WriteLine($"Member \"{member.Name}\" checked in.");
+        }
+        catch (MemberNotFoundException) 
+        {
+        Console.WriteLine("Member not found. Return to menu.");
+        }
     }
 
     public void CheckOutScreen()
     {
-        throw new NotImplementedException();
+
+        try
+        {
+            Member member = RequestMember();
+            Console.WriteLine($"Member \"{member.Name}\" checked out.");
+        }
+        catch (MemberNotFoundException)
+        {
+            Console.WriteLine("Member not found. Return to menu.");
+        }
     }
 
     public void DisplayMemberInfo()
     {
-        throw new NotImplementedException();
+        try
+        {
+            Member member = RequestMember();
+            member.DisplayMemberInfo();
+
+            Console.Write("Press Enter to return back to the Main Menu");
+            Console.ReadLine();
+            MainPage();
+        }
+        catch (MemberNotFoundException)
+        {
+            MainPage();
+        }
+
     }
 
     public void CheckBalance()

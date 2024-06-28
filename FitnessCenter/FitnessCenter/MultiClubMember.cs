@@ -24,5 +24,14 @@ public class MultiClubMember : Member
         throw new NotImplementedException();
         //club.CheckedOut_Members.Remove(this);
     }
+    public override void DisplayMemberInfo()
+    {
+        Console.WriteLine("\n=================================");
+        Console.WriteLine($"Name:\t\t\t{Name}");
+        Console.WriteLine($"ID:\t\t\t{ID}");
+        Console.WriteLine($"Fees:\t\t\t${Fees}");
+        Console.WriteLine($"Membership Points:\t{MembershipPoints} pts");
+        Console.WriteLine("=================================\n");
+    }
 
 }
