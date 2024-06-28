@@ -23,45 +23,40 @@ public class UI
     {
         Console.WriteLine("Welcome to the GC Fitness Center. How can we help you today?");
         Console.WriteLine("______________________________________________________");
-        Console.WriteLine("1. Add Single Club Member");
-        Console.WriteLine("2. Add Multi Club Member");
-        Console.WriteLine("3. Remove member");
-        Console.WriteLine("4. Check in Member");
-        Console.WriteLine("5. Check out Member");
-        Console.WriteLine("6. Display member info");
-        Console.WriteLine("7. Check balance");
-        Console.WriteLine("8. Exit");
+        Console.WriteLine("1. Add Member Screen");
+        Console.WriteLine("2. Remove member");
+        Console.WriteLine("3. Check in Member");
+        Console.WriteLine("4. Check out Member");
+        Console.WriteLine("5. Display member info");
+        Console.WriteLine("6. Check balance");
+        Console.WriteLine("7. Exit");
         Console.WriteLine("Please enter the # of your option.");
         string option = Console.ReadLine();
         if (option == "1")
         {
-            //AddSingleClubMember();
+            AddMemberScreen();
         }
         else if (option == "2")
         {
-            //AddMultiClubMember();
+            RemoveMemberScreen();
         }
         else if (option == "3")
         {
-            //RemoveMember();
+            CheckInScreen();
         }
         else if (option == "4")
         {
-            //CheckInMember();
+            CheckOutScreen();
         }
         else if (option == "5")
         {
-            //CheckOutMember();
+            DisplayMemberInfo();
         }
         else if (option == "6")
         {
-            DisplayMemberInfo();
+            CheckBalance();
         }
-        else if (option == "7")
-        {
-            //CheckBalanceMember();
-        }
-        else if (option =="8")
+        else if (option =="7")
         {
             Console.WriteLine("Exiting program...Goodbye!");
             return;
@@ -70,8 +65,6 @@ public class UI
         {
             Console.WriteLine("Invalid option. Please type a number from 1 to 7.");
         }
-
-        //throw new NotImplementedException();
     }
 
     public void AddMemberScreen()
