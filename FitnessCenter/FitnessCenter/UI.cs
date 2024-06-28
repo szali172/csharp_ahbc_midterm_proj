@@ -30,10 +30,10 @@ public class UI
         {
             Members = new Dictionary<string, Member>();
 
-            Members.Add("1", new SingleClubMember("1", "John Doe", Clubs[0]));
-            Members.Add("2", new SingleClubMember("2", "Jane Smith", Clubs[1]));
-            Members.Add("3", new MultiClubMember("3", "Alice Johnson"));
-            Members.Add("4", new MultiClubMember("4", "Bob Brown"));
+            //Members.Add("1", new SingleClubMember("1", "John Doe", Clubs[0]));
+            //Members.Add("2", new SingleClubMember("2", "Jane Smith", Clubs[1]));
+            //Members.Add("3", new MultiClubMember("3", "Alice Johnson"));
+            //Members.Add("4", new MultiClubMember("4", "Bob Brown"));
         }
     }
 
@@ -160,7 +160,20 @@ public class UI
 
     public void DisplayMemberInfo()
     {
-        throw new NotImplementedException();
+        try
+        {
+            Member member = RequestMember();
+            member.DisplayMemberInfo();
+
+            Console.Write("Press Enter to return back to the Main Menu");
+            Console.ReadLine();
+            MainPage();
+        }
+        catch (MemberNotFoundException)
+        {
+            MainPage();
+        }
+
     }
 
     public void CheckBalance()
