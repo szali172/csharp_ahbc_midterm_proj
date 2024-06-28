@@ -56,7 +56,7 @@ public class UI
         {
             CheckBalance();
         }
-        else if (option =="7")
+        else if (option == "7")
         {
             Console.WriteLine("Exiting program...Goodbye!");
             return;
@@ -74,7 +74,20 @@ public class UI
 
     public void RemoveMemberScreen()
     {
-        throw new NotImplementedException();
+        Console.Write("Enter member ID to remove: ");
+        int memberId = int.Parse(Console.ReadLine());
+
+        if (memberId.ContainsKey(memberId))
+        {
+            Member memberToRemove = memberId[memberId];
+            memberToRemove.CheckOut();
+            memberId.Remove(memberId);
+            Console.WriteLine($"{memberToRemove.Name} has been successfully removed.");
+        }
+        else
+        {
+            Console.WriteLine("Member not found.");
+        }
     }
 
     public void CheckInScreen()
