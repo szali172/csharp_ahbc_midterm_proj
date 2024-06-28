@@ -1,7 +1,7 @@
 ﻿
 namespace FitnessCenter;
 
-public class SingleClubMember : Member //come back to this
+public class SingleClubMember : Member
 {
     //Properties
     private Club assignedClub;
@@ -11,25 +11,24 @@ public class SingleClubMember : Member //come back to this
     {
         this.Name = Name;
         this.ID = ID;
+        Fees = 10.0m;
     }
 
     //Methods
     public override void CheckIn(Club club)
     {
-        assignedClub = club;
-        throw new NotImplementedException();
+        if (assignedClub == club)
+        {
+            club.CheckedInMembers.Add(this);
+        }
+        else 
+        { 
+            throw new InvalidClub("User not registered here, please try a diferent club"); 
+        }
     }
     public override void CheckOut(Club club)
     {
-        throw new NotImplementedException();    
+        club.CheckedInMembers.Remove(this);
     }
-    public void ChangeClub(Club newClub)
-    {
-        throw new NotImplementedException ();
-    }
-    public void ChangeMembership()
-    {
-        throw new NotImplementedException();
-        //Console.WriteLine("Your club has changed");
-    }
+    
 }
