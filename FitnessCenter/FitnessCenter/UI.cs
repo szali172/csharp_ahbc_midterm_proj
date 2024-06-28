@@ -30,10 +30,10 @@ public class UI
         {
             Members = new Dictionary<string, Member>();
 
-            //Members.Add("1", new SingleClubMember("1", "John Doe", Clubs[0]));
-            //Members.Add("2", new SingleClubMember("2", "Jane Smith", Clubs[1]));
-            //Members.Add("3", new MultiClubMember("3", "Alice Johnson"));
-            //Members.Add("4", new MultiClubMember("4", "Bob Brown"));
+            Members.Add("1", new SingleClubMember(Clubs[0], "John Doe", "1"));
+            Members.Add("2", new SingleClubMember(Clubs[1], "Jane Smith", "2"));
+            Members.Add("3", new MultiClubMember("Alice Johnson", "3"));
+            Members.Add("4", new MultiClubMember("Bob Brown", "4"));
         }
     }
 
@@ -150,12 +150,29 @@ public class UI
     public void CheckInScreen()
     {
         
-        return;
+       try
+        {
+            Member member = RequestMember();
+            Console.WriteLine($"Member \"{member.Name}\" checked in.");
+        }
+        catch (MemberNotFoundException) 
+        {
+        Console.WriteLine("Member not found. Return to menu.");
+        }
     }
 
     public void CheckOutScreen()
     {
-        throw new NotImplementedException();
+
+        try
+        {
+            Member member = RequestMember();
+            Console.WriteLine($"Member \"{member.Name}\" checked out.");
+        }
+        catch (MemberNotFoundException)
+        {
+            Console.WriteLine("Member not found. Return to menu.");
+        }
     }
 
     public void DisplayMemberInfo()
