@@ -170,7 +170,20 @@ public class UI
 
     public void DisplayMemberInfo()
     {
-        throw new NotImplementedException();
+        try
+        {
+            Member member = RequestMember();
+            member.DisplayMemberInfo();
+
+            Console.Write("Press Enter to return back to the Main Menu");
+            Console.ReadLine();
+            MainPage();
+        }
+        catch (MemberNotFoundException)
+        {
+            MainPage();
+        }
+
     }
 
     public void CheckBalance()

@@ -2,8 +2,9 @@
 
 static void Main() 
 {
-    Club club = new Club("test", "testAddy");
+    Club club = new Club("test", "123 North Street");
     SingleClubMember member = new SingleClubMember(club, "test", "id123");
+    MultiClubMember member2 = new MultiClubMember("person", "newId");
 
     Dictionary<string, Member> members = new Dictionary<string, Member>()
     {
@@ -14,6 +15,7 @@ static void Main()
 
     UI ui = new UI(members, clubs);
 
+    ui.DisplayMemberInfo();
     /* Test UI functions here */
     //ui.RequestMember();
     }
