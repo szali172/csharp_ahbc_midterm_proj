@@ -15,7 +15,6 @@ static void Main()
 
     UI ui = new UI(members, clubs);
 
-    ui.DisplayMemberInfo();
     /* Test UI functions here */
     //ui.RequestMember();
     }

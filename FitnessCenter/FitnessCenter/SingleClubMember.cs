@@ -18,7 +18,7 @@ public class SingleClubMember : Member
     //Methods
     public override void CheckIn(Club club)
     {
-        if (assignedClub == club)
+        if (AssignedClub == club)
         {
             club.CheckedInMembers.Add(this);
         }
