@@ -1,12 +1,12 @@
 namespace FitnessCenter;
 
-public class Club
+public class Clubs
 {
     public string Name { get; set; }
     public string Address { get; set; }
     public List<Member> CheckedInMembers { get; set; }
 
-    public Club(string name, string address)
+    public Clubs(string name, string address)
     {
         Name = name;
         Address = address;

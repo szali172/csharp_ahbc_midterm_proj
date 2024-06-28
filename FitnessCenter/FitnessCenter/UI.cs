@@ -5,10 +5,10 @@ public class UI
     //Properties
 
     public Dictionary<string, Member> Members { get; set; }
-    public List<Club> Clubs { get; set; }
+    public List<Clubs> Clubs { get; set; }
 
     //Constructor
-    public UI(Dictionary<string, Member> members, List<Club> clubs)
+    public UI(Dictionary<string, Member> members, List<Clubs> clubs)
     {
         // Initialize Members and Clubs based on provided parameters
         Members = members;
@@ -17,12 +17,12 @@ public class UI
        
         if (Clubs == null)
         {
-            Clubs = new List<Club>
+            Clubs = new List<Clubs>
                 {
-                    new Club("Club 1", "123 North Street"),
-                    new Club("Club 2", "456 South Street"),
-                    new Club("Club 3", "789 West Street"),
-                    new Club("Club 4", "101 East Street")
+                    new Clubs("Club 1", "123 North Street"),
+                    new Clubs("Club 2", "456 South Street"),
+                    new Clubs("Club 3", "789 West Street"),
+                    new Clubs("Club 4", "101 East Street")
                 };
         }
 
@@ -49,7 +49,42 @@ public class UI
             return false; 
         }
     }
+    public Clubs ListClubs()
+    {
 
+       Clubs = Clubs ?? new List<Clubs>();
+        UI Club = new Club();
+        Console.WriteLine("Select a club by entering a number:");
+
+        for (int i = 0; i < Club.Clubs.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}. {Club.Clubs[i].Name}");
+        }
+        int clubNumber;
+        do
+        {
+            Console.Write("Please enter club number: ");
+            string input = Console.ReadLine();
+
+            if (int.TryParse(input, out clubNumber))
+            {
+                
+                if (clubNumber >= 1 && clubNumber <= Club.Clubs.Count)
+                {
+                    
+                    return Club.Clubs[clubNumber - 1];
+                }
+                else
+                {
+                    Console.WriteLine("Unfortunately, you've enter an invalid club number. Please try again.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Unfortunately, you've enter invalid number. Please enter a valid number.");
+            }
+        } while (true);
+    }
     public Member RequestMember()
     {
         while(true)
@@ -121,14 +156,13 @@ public class UI
         }
         else if (option =="7")
         {
-            //CheckBalanceMember();
+            Exit();
         }
-        else if (option =="8")
+        else
         {
             Console.WriteLine("Exiting program...Goodbye!");
             return;
         }
-        else
         {
             Console.WriteLine("Invalid option. Please type a number from 1 to 7.");
         }
@@ -141,7 +175,7 @@ public class UI
 
     public void RemoveMemberScreen()
     {
-        throw new NotImplementedException();
+        
     }
 
     public void CheckInScreen()
