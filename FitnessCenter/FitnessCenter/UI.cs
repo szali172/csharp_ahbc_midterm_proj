@@ -122,7 +122,7 @@ public class UI
         }
         else if (option == "7")
         {
-            //CheckBalanceMember();
+           // CheckBalanceMember();
         }
         else if (option =="8")
         {
