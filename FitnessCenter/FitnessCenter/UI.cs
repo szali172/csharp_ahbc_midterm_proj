@@ -1,4 +1,6 @@
 ﻿
+using System.ComponentModel.Design;
+using System.Reflection;
 using static System.Reflection.Metadata.BlobBuilder;
 
 namespace FitnessCenter;
@@ -16,7 +18,7 @@ public class UI
         Members = members;
         Clubs = clubs;
 
-       
+
         if (Clubs == null)
         {
             Clubs = new List<Clubs>
@@ -46,24 +48,36 @@ public class UI
         {
             return true;
         }
-        else 
-        { 
-            return false; 
+        else
+        {
+            return false;
         }
     }
     public Clubs ListClubs()
     {
+        int choice;
+        while (true)
         {
-            foreach (Clubs club in Clubs)
+            Console.WriteLine("Please select a club:");
+            for (int i = 0; i < Clubs.Count; i++)
             {
-                Console.WriteLine($"Club Name: {club.Name}, Address: {club.Address}");
+                Console.WriteLine($"{i + 1}. {Clubs[i].Name}");
             }
-            return ListClubs();
-           
+            Console.WriteLine("Please enter the number of the club:");
+            if (int.TryParse(Console.ReadLine(), out choice))
+            {
+                return Clubs[choice];
+            }
+            else
+            {
+                Console.WriteLine("The number you've entered is invalid. Please enter a valid number.");
+            }
+            
         }
     }
 
-    public Member RequestMember()
+       
+public Member RequestMember()
     {
         while(true)
         {
@@ -153,7 +167,18 @@ public class UI
 
     public void RemoveMemberScreen()
     {
-        
+       Member memberToRemove = RequestMember();
+        if (memberToRemove != null) 
+        {
+            //memberToRemove.CheckOut();
+            //Member.Remove(memberToRemove.ToString());
+            Console.WriteLine($"Member {memberToRemove.Name} (ID: {memberToRemove.ID}) has been removed.");
+            Console.WriteLine("Returning to main screen...");
+        }
+        else
+        {
+            Console.WriteLine("Member not found.");
+        }
     }
 
     public void CheckInScreen()
