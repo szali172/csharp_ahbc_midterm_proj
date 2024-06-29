@@ -1,4 +1,6 @@
 ﻿
+using static System.Reflection.Metadata.BlobBuilder;
+
 namespace FitnessCenter;
 public class UI
 {
@@ -51,40 +53,16 @@ public class UI
     }
     public Clubs ListClubs()
     {
-
-       Clubs = Clubs ?? new List<Clubs>();
-        UI Club = new Club();
-        Console.WriteLine("Select a club by entering a number:");
-
-        for (int i = 0; i < Club.Clubs.Count; i++)
         {
-            Console.WriteLine($"{i + 1}. {Club.Clubs[i].Name}");
+            foreach (Clubs club in Clubs)
+            {
+                Console.WriteLine($"Club Name: {club.Name}, Address: {club.Address}");
+            }
+            return ListClubs();
+           
         }
-        int clubNumber;
-        do
-        {
-            Console.Write("Please enter club number: ");
-            string input = Console.ReadLine();
-
-            if (int.TryParse(input, out clubNumber))
-            {
-                
-                if (clubNumber >= 1 && clubNumber <= Club.Clubs.Count)
-                {
-                    
-                    return Club.Clubs[clubNumber - 1];
-                }
-                else
-                {
-                    Console.WriteLine("Unfortunately, you've enter an invalid club number. Please try again.");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Unfortunately, you've enter invalid number. Please enter a valid number.");
-            }
-        } while (true);
     }
+
     public Member RequestMember()
     {
         while(true)
