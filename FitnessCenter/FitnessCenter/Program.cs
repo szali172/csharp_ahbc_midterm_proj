@@ -16,7 +16,10 @@ static void Main()
     List<Club> clubs = new List<Club> { club };
 
     UI ui = new UI(members, clubs);
+    ui.MainPage();
 
+
+    //ui.DisplayMemberInfo();
     /* Test UI functions here */
     ui.CheckBalance();  
     }
