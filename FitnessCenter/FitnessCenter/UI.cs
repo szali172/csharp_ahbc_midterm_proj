@@ -3,19 +3,20 @@ namespace FitnessCenter;
 public class UI
 {
     //Properties
-
     public Dictionary<string, Member> Members { get; set; }
     public List<Club> Clubs { get; set; }
 
-    //Constructor
+    // Constructor
     public UI(Dictionary<string, Member> members, List<Club> clubs)
     {
-        // Initialize Members and Clubs based on provided parameters
-        Members = members;
-        Clubs = clubs;
+        InitializeClubs(clubs);
+        InitializeMembers(members);
+    }
 
-       
-        if (Clubs == null)
+    // Methods
+    private void InitializeClubs(List<Club> clubs)
+    {
+        if (clubs == null)
         {
             Clubs = new List<Club>
                 {
@@ -25,17 +26,30 @@ public class UI
                     new Club("Club 4", "101 East Street")
                 };
         }
-
-        if (Members == null)
+        else
         {
-            Members = new Dictionary<string, Member>();
-
-            Members.Add("1", new SingleClubMember(Clubs[0], "John Doe", "1"));
-            Members.Add("2", new SingleClubMember(Clubs[1], "Jane Smith", "2"));
-            Members.Add("3", new MultiClubMember("Alice Johnson", "3"));
-            Members.Add("4", new MultiClubMember("Bob Brown", "4"));
+            Clubs = clubs;
         }
     }
+
+    private void InitializeMembers(Dictionary<string, Member> members)
+    {
+        if (members == null)
+        {
+            Members = new Dictionary<string, Member>
+                {
+                    { "1", new SingleClubMember(Clubs[0], "John Doe", "1") },
+                    { "2", new SingleClubMember(Clubs[1], "Jane Smith", "2") },
+                    { "3", new MultiClubMember("Alice Johnson", "3") },
+                    { "4", new MultiClubMember("Bob Brown", "4") }
+                };
+        }
+        else
+        {
+            Members = members;
+        }
+    }
+
 
     //Methods
     public bool CheckIfMemberExists(string ID)
@@ -142,24 +156,24 @@ public class UI
 
     public void CheckInScreen()
     {
-        
-       try
+        try
         {
             Member member = RequestMember();
+            member.CheckIn(Clubs[0]);
             Console.WriteLine($"Member \"{member.Name}\" checked in.");
         }
-        catch (MemberNotFoundException) 
+        catch (MemberNotFoundException)
         {
-        Console.WriteLine("Member not found. Return to menu.");
+            Console.WriteLine("Member not found. Return to menu.");
         }
     }
 
     public void CheckOutScreen()
     {
-
         try
         {
             Member member = RequestMember();
+            member.CheckOut(Clubs[0]); 
             Console.WriteLine($"Member \"{member.Name}\" checked out.");
         }
         catch (MemberNotFoundException)
@@ -193,7 +207,9 @@ public class UI
 
     public void Exit()
     {
-        throw new NotImplementedException();
+       Console.WriteLine("Exit. Goodbe!");
+        
+       Environment.Exit(0);
     }
 
 
