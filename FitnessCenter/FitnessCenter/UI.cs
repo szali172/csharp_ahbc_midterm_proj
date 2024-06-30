@@ -218,10 +218,7 @@ public class UI
             memberToCheckIn.CheckIn(selectedClub);
             Console.WriteLine($"Member {memberToCheckIn.Name} has been checked in to {selectedClub.Name}.");
         }
-        catch (InvalidClub ex)
-        {
-            Console.WriteLine(ex.Message);
-        }
+
         catch (MemberNotFoundException)
         {
             Console.WriteLine("Returning to main menu...");
@@ -237,10 +234,7 @@ public class UI
             memberToCheckOut.CheckOut(selectedClub);
             Console.WriteLine($"Member {memberToCheckOut.Name} has been checked out from {selectedClub.Name}.");
         }
-        catch (InvalidClub ex)
-        {
-            Console.WriteLine(ex.Message);
-        }
+
         catch (MemberNotFoundException)
         {
             Console.WriteLine("Returning to main menu...");
