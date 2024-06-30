@@ -8,7 +8,9 @@ static void Main()
 
     Dictionary<string, Member> members = new Dictionary<string, Member>()
     {
-       {member.ID, member}
+       {member.ID, member},
+       {member2.ID, member2},
+
     };
 
     List<Club> clubs = new List<Club> { club };
