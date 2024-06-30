@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.ComponentModel.Design;
 using System.Reflection;
 using static System.Reflection.Metadata.BlobBuilder;
@@ -9,10 +10,10 @@ public class UI
     //Properties
 
     public Dictionary<string, Member> Members { get; set; }
-    public List<Clubs> Clubs { get; set; }
+    public List<Club> Clubs { get; set; }
 
     //Constructor
-    public UI(Dictionary<string, Member> members, List<Clubs> clubs)
+    public UI(Dictionary<string, Member> members, List<Club> clubs)
     {
         // Initialize Members and Clubs based on provided parameters
         Members = members;
@@ -21,12 +22,12 @@ public class UI
 
         if (Clubs == null)
         {
-            Clubs = new List<Clubs>
+            Clubs = new List<Club>
                 {
-                    new Clubs("Club 1", "123 North Street"),
-                    new Clubs("Club 2", "456 South Street"),
-                    new Clubs("Club 3", "789 West Street"),
-                    new Clubs("Club 4", "101 East Street")
+                    new Club("Club 1", "123 North Street"),
+                    new Club("Club 2", "456 South Street"),
+                    new Club("Club 3", "789 West Street"),
+                    new Club("Club 4", "101 East Street")
                 };
         }
 
@@ -53,7 +54,7 @@ public class UI
             return false;
         }
     }
-    public Clubs ListClubs()
+    public Club ListClubs()
     {
         int choice;
         while (true)
@@ -66,7 +67,7 @@ public class UI
             Console.WriteLine("Please enter the number of the club:");
             if (int.TryParse(Console.ReadLine(), out choice))
             {
-                return Clubs[choice];
+                return Clubs[choice-1];
             }
             else
             {
@@ -111,6 +112,8 @@ public Member RequestMember()
 
     public void MainPage()
     {
+        while(true)
+        {
         Console.WriteLine("Welcome to the GC Fitness Center. How can we help you today?");
         Console.WriteLine("______________________________________________________");
         Console.WriteLine("1. Add Member Screen");
@@ -121,42 +124,42 @@ public Member RequestMember()
         Console.WriteLine("6. Check balance");
         Console.WriteLine("7. Exit");
         Console.WriteLine("Please enter the # of your option.");
-        string option = Console.ReadLine();
-        if (option == "1")
-        {
-            AddMemberScreen();
-        }
-        else if (option == "2")
-        {
-            RemoveMemberScreen();
-        }
-        else if (option == "3")
-        {
-            CheckInScreen();
-        }
-        else if (option == "4")
-        {
-            CheckOutScreen();
-        }
-        else if (option == "5")
-        {
-            DisplayMemberInfo();
-        }
-        else if (option == "6")
-        {
-            CheckBalance();
-        }
-        else if (option =="7")
-        {
-            Exit();
-        }
-        else
-        {
-            Console.WriteLine("Exiting program...Goodbye!");
-            return;
-        }
-        {
-            Console.WriteLine("Invalid option. Please type a number from 1 to 7.");
+
+            string option = Console.ReadLine();
+            if (option == "1")
+            {
+                AddMemberScreen();
+            }
+            else if (option == "2")
+            {
+                RemoveMemberScreen();
+            }
+            else if (option == "3")
+            {
+                CheckInScreen();
+            }
+            else if (option == "4")
+            {
+                CheckOutScreen();
+            }
+            else if (option == "5")
+            {
+                DisplayMemberInfo();
+            }
+            else if (option == "6")
+            {
+                CheckBalance();
+            }
+            else if (option == "7")
+            {
+                Console.WriteLine("Exiting program...Goodbye!");
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Invalid option. Please type a number from 1 to 7.");
+            }
+
         }
     }
 
@@ -168,16 +171,26 @@ public Member RequestMember()
     public void RemoveMemberScreen()
     {
        Member memberToRemove = RequestMember();
-        if (memberToRemove != null) 
+        if (memberToRemove != null)
         {
-            //memberToRemove.CheckOut();
-            //Member.Remove(memberToRemove.ToString());
+            Club selectedClub = ListClubs();
+            memberToRemove.CheckOut(selectedClub);
             Console.WriteLine($"Member {memberToRemove.Name} (ID: {memberToRemove.ID}) has been removed.");
             Console.WriteLine("Returning to main screen...");
+            return;
         }
         else
         {
             Console.WriteLine("Member not found.");
+        }
+        try
+        {
+            Member member = RequestMember();
+            Console.WriteLine($"Member \"{member.Name}\" checked out.");
+        }
+        catch (MemberNotFoundException)
+        {
+            Console.WriteLine("Member not found. Return to menu.");
         }
     }
 
@@ -232,10 +245,6 @@ public Member RequestMember()
         throw new NotImplementedException();
     }
 
-    public void Exit()
-    {
-        throw new NotImplementedException();
-    }
 
 
 

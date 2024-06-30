@@ -4,10 +4,10 @@ namespace FitnessCenter;
 public class SingleClubMember : Member
 {
     //Properties
-    public Clubs AssignedClub;
+    public Club AssignedClub;
 
     //Constructor
-    public SingleClubMember(Clubs assignedclub, string Name, string ID)
+    public SingleClubMember(Club assignedclub, string Name, string ID)
     {
         this.Name = Name;
         this.ID = ID;
@@ -16,9 +16,9 @@ public class SingleClubMember : Member
     }
 
     //Methods
-    public override void CheckIn(Clubs club)
+    public override void CheckIn(Club club)
     {
-        if (assignedClub == club)
+        if (AssignedClub == club)
         {
             club.CheckedInMembers.Add(this);
         }
@@ -28,7 +28,7 @@ public class SingleClubMember : Member
         }
     }
     
-    public override void CheckOut(Clubs club)
+    public override void CheckOut(Club club)
     {
         club.CheckedInMembers.Remove(this);
     }
@@ -43,7 +43,7 @@ public class SingleClubMember : Member
         Console.WriteLine("==========================================\n");
     }
     
-    public void ChangeClub(Clubs newClub)
+    public void ChangeClub(Club newClub)
     {
         throw new NotImplementedException ();
     }

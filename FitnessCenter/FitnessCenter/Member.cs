@@ -8,9 +8,9 @@ public abstract class Member
     public decimal Fees { get; set; }
 
     //methods
-    public abstract void CheckIn(Clubs club);
+    public abstract void CheckIn(Club club);
     
-    public abstract void CheckOut(Clubs club);
+    public abstract void CheckOut(Club club);
 
     public abstract void DisplayMemberInfo();
     

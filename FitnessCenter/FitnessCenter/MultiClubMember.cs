@@ -13,13 +13,13 @@ public class MultiClubMember : Member
     }
 
 
-    public override void CheckIn(Clubs club)
+    public override void CheckIn(Club club)
     {
         throw new NotImplementedException();
         //club.CheckedIn_Members.Add(this);
     }
 
-    public override void CheckOut(Clubs club)
+    public override void CheckOut(Club club)
     {
         throw new NotImplementedException();
         //club.CheckedOut_Members.Remove(this);

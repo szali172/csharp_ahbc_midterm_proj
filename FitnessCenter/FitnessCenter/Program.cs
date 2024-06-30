@@ -2,7 +2,7 @@
 
 static void Main() 
 {
-    Clubs club = new Clubs("test", "123 North Street");
+    Club club = new Club("test", "123 North Street");
     SingleClubMember member = new SingleClubMember(club, "test", "id123");
     MultiClubMember member2 = new MultiClubMember("person", "newId");
 
@@ -11,11 +11,12 @@ static void Main()
        {member.ID, member}
     };
 
-    List<Clubs> clubs = new List<Clubs> { club };
+    List<Club> clubs = new List<Club> { club };
 
     UI ui = new UI(members, clubs);
+    ui.MainPage();
 
-    ui.DisplayMemberInfo();
+    //ui.DisplayMemberInfo();
     /* Test UI functions here */
     //ui.RequestMember();
     }
