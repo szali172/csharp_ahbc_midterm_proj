@@ -18,10 +18,6 @@ static void Main()
     UI ui = new UI(members, clubs);
     ui.MainPage();
 
-
-    //ui.DisplayMemberInfo();
-    /* Test UI functions here */
-    ui.CheckBalance();  
-    }
+ }
 Main();
 
