@@ -4,7 +4,7 @@ static void Main()
 {
     Club club = new Club("test", "123 North Street");
     SingleClubMember member = new SingleClubMember(club, "test", "id123");
-    MultiClubMember member2 = new MultiClubMember("person", "newId");
+    MultiClubMember member2 = new MultiClubMember("person", "id234");
 
     Dictionary<string, Member> members = new Dictionary<string, Member>()
     {
@@ -17,7 +17,7 @@ static void Main()
 
     ui.DisplayMemberInfo();
     /* Test UI functions here */
-    //ui.RequestMember();
+    ui.CheckBalance();  
     }
 Main();
 
