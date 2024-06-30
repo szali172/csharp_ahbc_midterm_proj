@@ -188,7 +188,21 @@ public class UI
 
     public void CheckBalance()
     {
-        throw new NotImplementedException();
+        try
+        {
+            Member member = RequestMember();
+            Console.WriteLine($"{member.Name}");
+            Console.WriteLine($"{member.Fees}");
+            if (member is MultiClubMember multiClubMember)
+            {
+                Console.WriteLine($"{multiClubMember.MembershipPoints}");
+            }
+            else { }
+        }
+        catch (MemberNotFoundException)
+        {
+            MainPage();
+        }
     }
 
     public void Exit()
