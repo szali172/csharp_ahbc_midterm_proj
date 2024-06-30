@@ -159,26 +159,49 @@ public class UI
         try
         {
             Member member = RequestMember();
-            member.CheckIn(Clubs[0]);
-            Console.WriteLine($"Member \"{member.Name}\" checked in.");
+
+            if (member is SingleClubMember singleClubMember)
+            {
+                singleClubMember.CheckIn(singleClubMember.AssignedClub);
+                Console.WriteLine($"Sclub member \"{singleClubMember.Name}\" checked in to {singleClubMember.AssignedClub.Name}.");
+            }
+            else if (member is MultiClubMember multiClubMember)
+            {
+                Console.WriteLine($"Mclub member \"{multiClubMember.Name}\" checked in to their assigned clubsd.");
+                multiClubMember.CheckIn(null);
+
+            }
         }
         catch (MemberNotFoundException)
         {
             Console.WriteLine("Member not found. Return to menu.");
+
         }
     }
+
 
     public void CheckOutScreen()
     {
         try
         {
             Member member = RequestMember();
-            member.CheckOut(Clubs[0]); 
-            Console.WriteLine($"Member \"{member.Name}\" checked out.");
+
+            if (member is SingleClubMember singleClubMember)
+            {
+                singleClubMember.CheckOut(singleClubMember.AssignedClub);
+                Console.WriteLine($"Sclub member \"{singleClubMember.Name}\" checked out from {singleClubMember.AssignedClub.Name}.");
+            }
+            else if (member is MultiClubMember multiClubMember)
+            {
+                Console.WriteLine($"Mclub member \"{multiClubMember.Name}\" checked out from their clubsd.");
+                multiClubMember.CheckOut(null); 
+            }
+
         }
         catch (MemberNotFoundException)
         {
             Console.WriteLine("Member not found. Return to menu.");
+
         }
     }
 
