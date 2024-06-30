@@ -198,6 +198,9 @@ public class UI
                 Console.WriteLine($"{multiClubMember.MembershipPoints}");
             }
             else { }
+            Console.Write("Press Enter to return back to the Main Menu");
+            Console.ReadLine();
+            MainPage();
         }
         catch (MemberNotFoundException)
         {
