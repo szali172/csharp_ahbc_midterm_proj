@@ -1,10 +1,4 @@
-﻿
-using System;
-using System.ComponentModel.Design;
-using System.Reflection;
-using static System.Reflection.Metadata.BlobBuilder;
-
-namespace FitnessCenter;
+﻿namespace FitnessCenter;
 public class UI
 {
     //Properties
@@ -81,20 +75,26 @@ public class UI
             Console.WriteLine("Please enter the number of the club:");
             if (int.TryParse(Console.ReadLine(), out choice))
             {
-                return Clubs[choice-1];
+                if (choice >= 1 && choice <= Clubs.Count)
+                {
+                    return Clubs[choice - 1];
+                }
+                else
+                {
+                    Console.WriteLine("Invalid club number. Please enter a valid number.");
+                }
             }
             else
             {
-                Console.WriteLine("The number you've entered is invalid. Please enter a valid number.");
+                Console.WriteLine("Invalid input. Please enter a valid number.");
             }
-            
         }
     }
 
-       
-public Member RequestMember()
+
+    public Member RequestMember()
     {
-        while(true)
+        while (true)
         {
             Console.Write("Please enter a member ID: ");
             string memberID = Console.ReadLine();
@@ -105,7 +105,8 @@ public Member RequestMember()
                 continue;
             }
 
-            else if(Members.ContainsKey(memberID)) {
+            else if (Members.ContainsKey(memberID))
+            {
                 Console.WriteLine($"Member \"{Members[memberID].Name}\" was found");
                 return Members[memberID];
             }
@@ -119,25 +120,25 @@ public Member RequestMember()
                 {
                     throw new MemberNotFoundException();
                 }
-          
+
             }
         }
     }
 
     public void MainPage()
     {
-        while(true)
+        while (true)
         {
-        Console.WriteLine("Welcome to the GC Fitness Center. How can we help you today?");
-        Console.WriteLine("______________________________________________________");
-        Console.WriteLine("1. Add Member Screen");
-        Console.WriteLine("2. Remove member");
-        Console.WriteLine("3. Check in Member");
-        Console.WriteLine("4. Check out Member");
-        Console.WriteLine("5. Display member info");
-        Console.WriteLine("6. Check balance");
-        Console.WriteLine("7. Exit");
-        Console.WriteLine("Please enter the # of your option.");
+            Console.WriteLine("Welcome to the GC Fitness Center. How can we help you today?");
+            Console.WriteLine("______________________________________________________");
+            Console.WriteLine("1. Add Member Screen");
+            Console.WriteLine("2. Remove member");
+            Console.WriteLine("3. Check in Member");
+            Console.WriteLine("4. Check out Member");
+            Console.WriteLine("5. Display member info");
+            Console.WriteLine("6. Check balance");
+            Console.WriteLine("7. Exit");
+            Console.WriteLine("Please enter the # of your option.");
 
             string option = Console.ReadLine();
             if (option == "1")
@@ -184,7 +185,7 @@ public Member RequestMember()
 
     public void RemoveMemberScreen()
     {
-       Member memberToRemove = RequestMember();
+        Member memberToRemove = RequestMember();
         if (memberToRemove != null)
         {
             Club selectedClub = ListClubs();
@@ -212,13 +213,18 @@ public Member RequestMember()
     {
         try
         {
-            Member member = RequestMember();
-            member.CheckIn(Clubs[0]);
-            Console.WriteLine($"Member \"{member.Name}\" checked in.");
+            Member memberToCheckIn = RequestMember();
+            Club selectedClub = ListClubs();
+            memberToCheckIn.CheckIn(selectedClub);
+            Console.WriteLine($"Member {memberToCheckIn.Name} has been checked in to {selectedClub.Name}.");
+        }
+        catch (InvalidClub ex)
+        {
+            Console.WriteLine(ex.Message);
         }
         catch (MemberNotFoundException)
         {
-            Console.WriteLine("Member not found. Return to menu.");
+            Console.WriteLine("Returning to main menu...");
         }
     }
 
@@ -226,13 +232,18 @@ public Member RequestMember()
     {
         try
         {
-            Member member = RequestMember();
-            member.CheckOut(Clubs[0]); 
-            Console.WriteLine($"Member \"{member.Name}\" checked out.");
+            Member memberToCheckOut = RequestMember();
+            Club selectedClub = ListClubs();
+            memberToCheckOut.CheckOut(selectedClub);
+            Console.WriteLine($"Member {memberToCheckOut.Name} has been checked out from {selectedClub.Name}.");
+        }
+        catch (InvalidClub ex)
+        {
+            Console.WriteLine(ex.Message);
         }
         catch (MemberNotFoundException)
         {
-            Console.WriteLine("Member not found. Return to menu.");
+            Console.WriteLine("Returning to main menu...");
         }
     }
 
@@ -274,6 +285,6 @@ public Member RequestMember()
         {
             MainPage();
         }
-    } 
+    }
 
 }
