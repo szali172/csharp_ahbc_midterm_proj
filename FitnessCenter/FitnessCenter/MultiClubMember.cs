@@ -12,18 +12,17 @@ public class MultiClubMember : Member
         MembershipPoints = 0;
     }
 
-
     public override void CheckIn(Club club)
     {
-        throw new NotImplementedException();
-        //club.CheckedIn_Members.Add(this);
+        MembershipPoints += 5;
+        club.CheckedInMembers.Add(this);
     }
 
     public override void CheckOut(Club club)
     {
-        throw new NotImplementedException();
-        //club.CheckedOut_Members.Remove(this);
+        club.CheckedInMembers.Remove(this);
     }
+
     public override void DisplayMemberInfo()
     {
         Console.WriteLine("\n=================================");
