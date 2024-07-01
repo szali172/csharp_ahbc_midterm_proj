@@ -22,10 +22,10 @@ public class UI
         {
             Clubs = new List<Club>
                 {
-                    new Club("Club 1", "123 North Street"),
-                    new Club("Club 2", "456 South Street"),
-                    new Club("Club 3", "789 West Street"),
-                    new Club("Club 4", "101 East Street")
+                    new Club("Flex Appeal", "123 North Street"),
+                    new Club("Git Gud", "456 South Street"),
+                    new Club("Gym Jones", "789 West Street"),
+                    new Club("Buff Buffet", "101 East Street")
                 };
         }
         else
@@ -40,11 +40,28 @@ public class UI
         {
             Members = new Dictionary<string, Member>
                 {
-                    { "1", new SingleClubMember(Clubs[0], "John Doe", "1") },
-                    { "2", new SingleClubMember(Clubs[1], "Jane Smith", "2") },
-                    { "3", new MultiClubMember("Alice Johnson", "3") },
-                    { "4", new MultiClubMember("Bob Brown", "4") }
+                    { "1", new SingleClubMember(Clubs[0], "Morgan Jelly", "1") },
+                    { "2", new SingleClubMember(Clubs[1], "20 Cent", "2") },
+                    { "3", new SingleClubMember(Clubs[2], "Anita Bath", "3") },
+                    { "4", new SingleClubMember(Clubs[2], "Brad Pitts", "4") },
+                    { "5", new SingleClubMember(Clubs[2], "Captain Thanos", "5") },
+                    { "6", new SingleClubMember(Clubs[3], "Jonathon GotHops", "6") },
+                    { "7", new MultiClubMember("Betty White", "7") },
+                    { "8", new MultiClubMember("Phil McCheese", "8") },
+                    { "9", new MultiClubMember("Bigge No Smalls", "9") },
+                    { "10", new MultiClubMember("Michael Blackbeard", "10") },
                 };
+
+            Members["1"].CheckIn(Clubs[0]);
+            Members["2"].CheckIn(Clubs[1]);
+            Members["3"].CheckIn(Clubs[2]);
+            Members["4"].CheckIn(Clubs[2]);
+            Members["5"].CheckIn(Clubs[2]);
+            Members["6"].CheckIn(Clubs[3]);
+            Members["7"].CheckIn(Clubs[0]);
+            Members["8"].CheckIn(Clubs[1]);
+            Members["9"].CheckIn(Clubs[1]);
+            Members["10"].CheckIn(Clubs[3]);
         }
         else
         {
@@ -84,12 +101,11 @@ public class UI
                 if (choice >= minNumber && choice <= maxNumber)
                 {
                     Console.WriteLine("Valid input: " + choice);
-
+                    return Clubs[choice - 1];
                 }
                 else
                 {
                     Console.WriteLine($"Input out of range. Please enter a number between {minNumber} and {maxNumber}.");
-
                 }
             }
             else
@@ -137,7 +153,7 @@ public class UI
     {
         while (true)
         {
-            Console.WriteLine("Welcome to the GC Fitness Center. How can we help you today?");
+            Console.WriteLine("\nWelcome to the GC Fitness Center. How can we help you today?");
             Console.WriteLine("______________________________________________________");
             Console.WriteLine("1. Add Member");
             Console.WriteLine("2. Remove Member");
