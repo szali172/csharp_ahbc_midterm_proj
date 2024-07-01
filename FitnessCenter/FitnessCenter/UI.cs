@@ -1,3 +1,5 @@
+using System.Text.RegularExpressions;
+
 namespace FitnessCenter;
 
 public class UI
@@ -68,7 +70,7 @@ public class UI
     {
         int choice;
         int minNumber = 1;
-        int maxNumber = 4; 
+        int maxNumber = 4;
         while (true)
         {
             Console.WriteLine("Please select a club:");
@@ -87,15 +89,6 @@ public class UI
                 else
                 {
                     Console.WriteLine($"Input out of range. Please enter a number between {minNumber} and {maxNumber}.");
-
-
-                if (choice >= 1 && choice <= Clubs.Count)
-                {
-                    return Clubs[choice - 1];
-                }
-                else
-                {
-                    Console.WriteLine("Invalid club number. Please enter a valid number.");
 
                 }
             }
