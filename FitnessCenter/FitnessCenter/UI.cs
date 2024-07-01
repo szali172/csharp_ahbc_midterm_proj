@@ -383,12 +383,8 @@ public class UI
             else { }
             Console.Write("Press Enter to return back to the Main Menu");
             Console.ReadLine();
-            MainPage();
         }
-        catch (MemberNotFoundException)
-        {
-            MainPage();
-        }
+        catch (MemberNotFoundException) { }
     }
 
 }
