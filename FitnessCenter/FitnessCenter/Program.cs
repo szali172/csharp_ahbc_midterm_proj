@@ -3,6 +3,7 @@
 static void Main() 
 {
     Club club = new Club("Test Club", "123 North Street");
+    Club newClub = new Club("Test Club 2", "aesf");
     SingleClubMember member = new SingleClubMember(club, "Test Member", "id123");
     MultiClubMember member2 = new MultiClubMember("Person Member", "id234");
 
@@ -14,7 +15,7 @@ static void Main()
     };
 
     // Create a list of clubs
-    List<Club> clubs = new List<Club> { club };
+    List<Club> clubs = new List<Club> { club , newClub };
 
     // Initialize the UI with members and clubs
     UI ui = new UI(members, clubs);
