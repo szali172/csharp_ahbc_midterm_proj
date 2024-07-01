@@ -76,17 +76,21 @@ public class UI
         while (true)
         {
             Console.WriteLine("Please select a club:");
+            for (int i = 0; i < Clubs.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {Clubs[i].Name}");
+            }
+            Console.WriteLine("Please enter the number of the club:");
             if (int.TryParse(Console.ReadLine(), out choice))
             {
                 if (choice >= minNumber && choice <= maxNumber)
                 {
                     Console.WriteLine("Valid input: " + choice);
 
-            }
+                }
                 else
                 {
                     Console.WriteLine($"Input out of range. Please enter a number between {minNumber} and {maxNumber}.");
-
 
                 }
             }
