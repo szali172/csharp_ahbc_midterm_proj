@@ -7,7 +7,7 @@ static void Main()
 
     // Directly call RemoveMemberScreen method
     ui.MainPage();
-
+  
     // Keep the console open to view results
     Console.WriteLine("Press any key to exit...");
     Console.ReadKey();
