@@ -32,4 +32,23 @@ public class Club
     {
         return member.Fees;
     }
+
+    public void DisplayCheckedInMembers()
+    {
+        Console.WriteLine("=================================");
+        if (CheckedInMembers.Count == 0)
+        {
+            Console.WriteLine("There are no members currently checked in at this club");
+        }
+        else
+        {
+            Console.WriteLine($"Members checked in at \"{Name}\":");
+            for (int i = 0; i < CheckedInMembers.Count; i++)
+            {
+                Console.WriteLine($"\t{i + 1}. {CheckedInMembers[i].Name}");
+            }
+        }
+        Console.WriteLine("=================================");
+
+    }
 }

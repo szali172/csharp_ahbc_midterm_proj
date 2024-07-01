@@ -62,6 +62,7 @@ public class UI
             return false;
         }
     }
+
     public Club ListClubs()
     {
         int choice;
@@ -144,13 +145,14 @@ public class UI
         {
             Console.WriteLine("Welcome to the GC Fitness Center. How can we help you today?");
             Console.WriteLine("______________________________________________________");
-            Console.WriteLine("1. Add Member Screen");
-            Console.WriteLine("2. Remove member");
-            Console.WriteLine("3. Check in Member");
-            Console.WriteLine("4. Check out Member");
-            Console.WriteLine("5. Display member info");
-            Console.WriteLine("6. Check balance");
-            Console.WriteLine("7. Exit");
+            Console.WriteLine("1. Add Member");
+            Console.WriteLine("2. Remove Member");
+            Console.WriteLine("3. Check In Member");
+            Console.WriteLine("4. Check Out Member");
+            Console.WriteLine("5. Display Member Info");
+            Console.WriteLine("6. Display Checked In Members");
+            Console.WriteLine("7. Check Member Balance");
+            Console.WriteLine("8. Exit");
             Console.WriteLine("Please enter the # of your option.");
 
             string option = Console.ReadLine();
@@ -176,16 +178,20 @@ public class UI
             }
             else if (option == "6")
             {
-                CheckBalance();
+                DisplayCheckInMembers();
             }
             else if (option == "7")
+            {
+                CheckBalance();
+            }
+            else if (option == "8")
             {
                 Console.WriteLine("Exiting program...Goodbye!");
                 break;
             }
             else
             {
-                Console.WriteLine("Invalid option. Please type a number from 1 to 7.");
+                Console.WriteLine("Invalid option. Please type a number from 1 to 8.");
             }
 
         }
@@ -270,6 +276,17 @@ public class UI
             MainPage();
         }
 
+    }
+
+    public void DisplayCheckInMembers()
+    {
+        Console.WriteLine("Select a club you would like to view");
+        Club selectedClub = ListClubs();
+
+        selectedClub.DisplayCheckedInMembers();
+
+        Console.Write("Press Enter to return back to the Main Menu");
+        Console.ReadLine();
     }
 
     public void CheckBalance()
