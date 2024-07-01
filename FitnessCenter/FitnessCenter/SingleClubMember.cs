@@ -24,7 +24,7 @@ public class SingleClubMember : Member
         }
         else 
         { 
-            throw new InvalidClub("User not registered here, please try a diferent club"); 
+            throw new InvalidClub("User not registered here, please visit a different club...");
         }
     }
     

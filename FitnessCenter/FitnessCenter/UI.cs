@@ -69,8 +69,11 @@ public class UI
     public Club ListClubs()
     {
         int choice;
+
         int minNumber = 1;
         int maxNumber = 4;
+
+
         while (true)
         {
             Console.WriteLine("Please select a club:");
@@ -81,6 +84,7 @@ public class UI
             Console.WriteLine("Please enter the number of the club:");
             if (int.TryParse(Console.ReadLine(), out choice))
             {
+
                 if (choice >= minNumber && choice <= maxNumber)
                 {
                     Console.WriteLine("Valid input: " + choice);
@@ -89,6 +93,15 @@ public class UI
                 else
                 {
                     Console.WriteLine($"Input out of range. Please enter a number between {minNumber} and {maxNumber}.");
+
+
+                if (choice >= 1 && choice <= Clubs.Count)
+                {
+                    return Clubs[choice - 1];
+                }
+                else
+                {
+                    Console.WriteLine("Invalid club number. Please enter a valid number.");
 
                 }
             }
@@ -310,7 +323,13 @@ public class UI
             memberToCheckIn.CheckIn(selectedClub);
             Console.WriteLine($"Member {memberToCheckIn.Name} has been checked in to {selectedClub.Name}.");
         }
+        catch (InvalidClub ex)
+        {
+            Console.WriteLine(ex.Message);
 
+            Console.Write("Press Enter to return back to the Main Menu");
+            Console.ReadLine();
+        }
         catch (MemberNotFoundException)
         {
             Console.WriteLine("Returning to main menu...");
@@ -342,12 +361,8 @@ public class UI
 
             Console.Write("Press Enter to return back to the Main Menu");
             Console.ReadLine();
-            MainPage();
         }
-        catch (MemberNotFoundException)
-        {
-            MainPage();
-        }
+        catch (MemberNotFoundException) { }
 
     }
 
@@ -368,10 +383,10 @@ public class UI
         {
             Member member = RequestMember();
             Console.WriteLine($"{member.Name}");
-            Console.WriteLine($"{member.Fees}");
+            Console.WriteLine($"${member.Fees}");
             if (member is MultiClubMember multiClubMember)
             {
-                Console.WriteLine($"{multiClubMember.MembershipPoints}");
+                Console.WriteLine($"Points: {multiClubMember.MembershipPoints}");
             }
             else { }
             Console.Write("Press Enter to return back to the Main Menu");
