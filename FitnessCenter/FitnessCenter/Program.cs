@@ -2,6 +2,7 @@
 
 static void Main() 
 {
+
     // Initialize the UI with members and clubs
     UI ui = new UI(null, null);
 
