@@ -219,7 +219,7 @@ public class UI
             if (nameInput != null)
             {
                 // Verify that the name is only letters
-                if (Regex.IsMatch(nameInput, @"^[a-zA-Z]+$"))
+                if (Regex.IsMatch(nameInput, @"^[a-zA-Z ]+$"))
                 {
                     name = nameInput;
                     break;
