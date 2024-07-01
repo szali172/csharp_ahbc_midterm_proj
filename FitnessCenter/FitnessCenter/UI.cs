@@ -1,4 +1,5 @@
-﻿namespace FitnessCenter;
+namespace FitnessCenter;
+
 public class UI
 {
     //Properties
@@ -62,6 +63,7 @@ public class UI
             return false;
         }
     }
+
     public Club ListClubs()
     {
         int choice;
@@ -131,13 +133,14 @@ public class UI
         {
             Console.WriteLine("Welcome to the GC Fitness Center. How can we help you today?");
             Console.WriteLine("______________________________________________________");
-            Console.WriteLine("1. Add Member Screen");
-            Console.WriteLine("2. Remove member");
-            Console.WriteLine("3. Check in Member");
-            Console.WriteLine("4. Check out Member");
-            Console.WriteLine("5. Display member info");
-            Console.WriteLine("6. Check balance");
-            Console.WriteLine("7. Exit");
+            Console.WriteLine("1. Add Member");
+            Console.WriteLine("2. Remove Member");
+            Console.WriteLine("3. Check In Member");
+            Console.WriteLine("4. Check Out Member");
+            Console.WriteLine("5. Display Member Info");
+            Console.WriteLine("6. Display Checked In Members");
+            Console.WriteLine("7. Check Member Balance");
+            Console.WriteLine("8. Exit");
             Console.WriteLine("Please enter the # of your option.");
 
             string option = Console.ReadLine();
@@ -163,16 +166,20 @@ public class UI
             }
             else if (option == "6")
             {
-                CheckBalance();
+                DisplayCheckInMembers();
             }
             else if (option == "7")
+            {
+                CheckBalance();
+            }
+            else if (option == "8")
             {
                 Console.WriteLine("Exiting program...Goodbye!");
                 break;
             }
             else
             {
-                Console.WriteLine("Invalid option. Please type a number from 1 to 7.");
+                Console.WriteLine("Invalid option. Please type a number from 1 to 8.");
             }
 
         }
@@ -180,7 +187,86 @@ public class UI
 
     public void AddMemberScreen()
     {
-        throw new NotImplementedException();
+        // Get the member name
+        string name;
+        while (true)
+        {
+            Console.Write("Enter the new member's name: ");
+            string nameInput = Console.ReadLine();
+
+            if (nameInput != null)
+            {
+                // Verify that the name is only letters
+                if (Regex.IsMatch(nameInput, @"^[a-zA-Z]+$"))
+                {
+                    name = nameInput;
+                    break;
+                }
+            }
+
+            Console.WriteLine("The name you have entered is invalid. " +
+                              "Please enter only letters for the name.");
+        }
+
+        // Get the member ID
+        string ID;
+        while (true)
+        {
+            Console.Write("Create a unique member ID: ");
+            string IDInput = Console.ReadLine();
+
+            if (IDInput != null)
+            {
+                if (IDInput.Length > 0 && CheckIfMemberExists(IDInput) == false)
+                {
+                    ID = IDInput;
+                    break;
+                }
+            }
+
+            Console.WriteLine("The ID you have entered is either invalid " +
+                              "or already exists. Please try again");
+        }
+
+        // Get membership option
+        string membership;
+
+        while (true)
+        {
+            Console.WriteLine("Select a membership type (Enter \"1\" or \"2\"):");
+            Console.WriteLine("\t1. Single Club Member");
+            Console.WriteLine("\t2. Multi Club Member");
+            string membershipInput = Console.ReadLine();
+
+            if (membershipInput == "1")
+            {
+                membership = "Single";
+                break;
+            }
+            else if (membershipInput == "2")
+            {
+                membership = "Multi";
+                break;
+            }
+
+            Console.WriteLine("The value you have entered could not be read. " +
+                              "Please enter either \"1\" or \"2\"");
+        }
+
+        // Create the member object, add it to members database
+        if (membership == "Single")
+        {
+            Club selectedClub = ListClubs();  // Single club members only - Select a club
+            SingleClubMember member = new SingleClubMember(selectedClub, name, ID);
+            Members[ID] = member;
+            Console.WriteLine($"Welcome \"{name}\"! Feel free to visit your club any time!\n");
+        }
+        else
+        {
+            MultiClubMember member = new MultiClubMember(name, ID);
+            Members[ID] = member;
+            Console.WriteLine($"Welcome \"{name}\"! Feel free to visit any of our clubs, any time!\n");
+        }
     }
 
     public void RemoveMemberScreen()
@@ -259,6 +345,17 @@ public class UI
         }
         catch (MemberNotFoundException) { }
 
+    }
+
+    public void DisplayCheckInMembers()
+    {
+        Console.WriteLine("Select a club you would like to view");
+        Club selectedClub = ListClubs();
+
+        selectedClub.DisplayCheckedInMembers();
+
+        Console.Write("Press Enter to return back to the Main Menu");
+        Console.ReadLine();
     }
 
     public void CheckBalance()
